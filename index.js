@@ -11,15 +11,15 @@ module.exports = function (operations, callback) {
     operations[i]((err, res) => {
       if (isError) return;
 
+      results[i] = res;
+      count--;
+
       if (err) {
         isError = true;
-        callback(err);
-      } else if (count == 0) {
+        callback(err, null);
+      } else if (count === 0) {
         callback(null, results);
-      } else {
-        results.push(res);
-        count--;
       }
-    });
+    })
   }
 };
