@@ -19,5 +19,5 @@ module.exports = function (operations, callback) {
     }
     Promise
         .all(promiseList)
-        .then((res) => {callback(null, res)}, () => {callback('ERROR')});
+        .then((res) => {callback(null, res)}, (err) => {callback(err)});
 };
